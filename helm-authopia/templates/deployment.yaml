@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: app-deploy
+    name: authopia-deploy
     labels:
       app: app
 spec:
@@ -16,7 +16,7 @@ spec:
         spec:
             containers:
                 - name: app
-                  image: muliaichsan17/authopia-images:app-{{ .Values.env.APP_VERSION }}
+                  image: muliaichsan17/authopia:app-{{ .Values.env.APP_VERSION }}
                   ports:
                     - containerPort: 3000
                   env:
