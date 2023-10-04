@@ -1,0 +1,13 @@
+env:
+  APP_VERSION: 14
+# grpcGateway:
+#   service:
+#     protocol: TCP
+#     port: 8080
+#     name: http
+# service:
+#   type: ClusterIP
+#   protocol: TCP
+#   port: 6565
+#   httpPort: 8080
+#   name: grpc
