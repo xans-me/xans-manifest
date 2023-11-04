@@ -3,5 +3,6 @@ apiVersion: consul.hashicorp.com/v1alpha1
 kind: ServiceDefaults
 metadata:
   name: authopia
+  namespace: default
 spec:
   protocol: "http"

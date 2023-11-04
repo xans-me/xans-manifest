@@ -1,14 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: authopia-deploy
+  name: authopia
+  namespace: default
   labels:
     app: authopia
 spec:
   replicas: 1
   selector:
     matchLabels:
-        app: authopia
+      app: authopia
+      service: authopia
   template:
     metadata:
       labels:

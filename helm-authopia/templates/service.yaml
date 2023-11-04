@@ -2,13 +2,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: authopia-service
+  name: authopia
+  namespace: default
   labels:
     app: authopia
 spec:
-    selector:
-        app: authopia
-    ports:
-     - protocol: TCP
-       port: 3000
-       targetPort: 3000
+  type: ClusterIP
+  selector:
+      app: authopia
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
