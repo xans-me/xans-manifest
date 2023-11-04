@@ -10,7 +10,6 @@ spec:
   selector:
     matchLabels:
       app: authopia
-      service: authopia
   template:
     metadata:
       labels:
