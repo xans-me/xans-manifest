@@ -1,41 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: authopia-deploy
-    labels:
-      app: app
+  name: authopia-deploy
+  labels:
+    app: authopia
 spec:
-    replicas: 3
-    selector:
-        matchLabels:
-            app: app
-    template:
-        metadata:
-            labels:
-                app: app
-        spec:
-            containers:
-                - name: app
-                  image: muliaichsan17/authopia:app-{{ .Values.env.APP_VERSION }}
-                  ports:
-                    - containerPort: 3000
-                  env:
-                  - name: NAME
-                    value: 'authopia'
-                  # readinessProbe:
-                  #   httpGet:
-                  #       path: /health
-                  #       port: 3000
-                  #   initialDelaySeconds: 10
-                  #   periodSeconds: 10
-                  #   successThreshold: 1
-                  #   failureThreshold: 3
-                  # livenessProbe:
-                  #   httpGet:
-                  #       path: /health
-                  #       port: 3000
-                  #   initialDelaySeconds: 10
-                  #   periodSeconds: 10
-                  #   timeoutSeconds: 5
-                  #   successThreshold: 1
-                  #   failureThreshold: 3
+  replicas: 1
+  selector:
+    matchLabels:
+        app: authopia
+  template:
+    metadata:
+      labels:
+        app: authopia
+      annotations:
+        consul.hashicorp.com/connect-inject: "true"
+    spec:
+      serviceAccountName: authopia
+      containers:
+        - name: authopia
+          image: muliaichsan17/authopia:app-{{ .Values.env.APP_VERSION }}
+          ports:
+            - containerPort: 3000
+          env:
+          - name: NAME
+            value: 'authopia'
+          readinessProbe:
+            httpGet:
+                path: /health
+                port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            successThreshold: 1
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+                path: /health
+                port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 3
