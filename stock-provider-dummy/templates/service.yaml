@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stock-provider-dummy
+  namespace: default
+  labels:
+    app: stock-provider-dummy
+spec:
+  type: ClusterIP
+  selector:
+      app: stock-provider-dummy
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

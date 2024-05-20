@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-stream-case
+  namespace: default
+  labels:
+    app: stock-stream-case
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-stream-case
+  template:
+    metadata:
+      labels:
+        app: stock-stream-case
+    spec:
+      serviceAccountName: stock-stream-case
+      containers:
+        - name: stock-stream-case
+          image: muliaichsan17/stock-stream-case:app-{{ .Values.env.APP_VERSION }}
+          ports:
+            - containerPort: 3000
+          env:
+          - name: NAME
+            value: 'stock-stream-case'
+          # readinessProbe:
+          #   httpGet:
+          #       path: /health
+          #       port: 3000
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10
+          #   successThreshold: 1
+          #   failureThreshold: 3
+          # livenessProbe:
+          #   httpGet:
+          #       path: /health
+          #       port: 3000
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10
+          #   timeoutSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 3

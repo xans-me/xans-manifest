@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-provider-dummy
+  namespace: default
+  labels:
+    app: stock-provider-dummy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-provider-dummy
+  template:
+    metadata:
+      labels:
+        app: stock-provider-dummy
+    spec:
+      serviceAccountName: stock-provider-dummy
+      containers:
+        - name: stock-provider-dummy
+          image: muliaichsan17/stock-provider-dummy:app-{{ .Values.env.APP_VERSION }}
+          ports:
+            - containerPort: 3000
+          env:
+          - name: NAME
+            value: 'stock-provider-dummy'
+          # readinessProbe:
+          #   httpGet:
+          #       path: /health
+          #       port: 3000
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10
+          #   successThreshold: 1
+          #   failureThreshold: 3
+          # livenessProbe:
+          #   httpGet:
+          #       path: /health
+          #       port: 3000
+          #   initialDelaySeconds: 10
+          #   periodSeconds: 10
+          #   timeoutSeconds: 5
+          #   successThreshold: 1
+          #   failureThreshold: 3

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: stock-stream-case
+  namespace: default
+  labels:
+    app: stock-stream-case
+spec:
+  type: ClusterIP
+  selector:
+      app: stock-stream-case
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
