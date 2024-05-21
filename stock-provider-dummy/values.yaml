@@ -1,5 +1,5 @@
 env:
-  APP_VERSION: 6
+  APP_VERSION: 7
 # grpcGateway:
 #   service:
 #     protocol: TCP
