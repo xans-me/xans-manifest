@@ -8,4 +8,4 @@ minio:
 
 cronjob:
   schedule: "*/5 * * * *"  # Menjalankan setiap hari pukul 06:00
-  image: muliaichsan17/data-fetch:d463d49a71120af77b1ef8820c1390c0d0520b31
+  image: muliaichsan17/data-fetch:48f4fd0db8938de737d435a0fbc97646bd63ad24
