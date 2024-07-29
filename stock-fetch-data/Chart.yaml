@@ -1,0 +1,5 @@
+apiVersion: v2
+name: my-chart
+description: A Helm chart for fetching data and storing in MinIO
+version: 1.0.0
+appVersion: "1.0.0"
