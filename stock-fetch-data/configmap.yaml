@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: data-fetch-config
+  namespace: minio
+data:
+  MINIO_ENDPOINT: 'http://stock-data-tenant-hl:9000'
+  MINIO_ACCESS_KEY: 'your-access-key'
+  MINIO_SECRET_KEY: 'your-secret-key'
+  MINIO_BUCKET_NAME: 'stock-data-bucket'
+  DATA_FILENAME: 'stock_data.csv'
+  TICKER_LIST: 'ANTM.JK,BBRI.JK'
+  START_DATE: '2021-01-01'
+  END_DATE: '2021-12-31'
