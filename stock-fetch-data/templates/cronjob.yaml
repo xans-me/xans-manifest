@@ -11,7 +11,7 @@ spec:
         spec:
           containers:
           - name: data-fetch-container
-            image: data-fetch-image:latest  # Image Docker yang dibangun dan di-push
+            image: muliaichsan17/data-fetch:latest  # Image Docker yang dibangun dan di-push
             envFrom:
             - configMapRef:
                 name: data-fetch-config  # Referensi ke ConfigMap untuk environment variables
