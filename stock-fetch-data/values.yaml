@@ -7,5 +7,10 @@ minio:
   start_date: "2021-01-01"  # Default start date
 
 cronjob:
+<<<<<<< Updated upstream
   schedule: "*/5 * * * *"  # Menjalankan setiap hari pukul 06:00
   image: muliaichsan17/data-fetch:c8417e6e685f93fc997fcd6635f75270dd1ce769
+=======
+  schedule: "*/2 * * * *"  # Menjalankan setiap hari pukul 06:00
+  image: "muliaichsan17/data-fetch:latest"
+>>>>>>> Stashed changes
