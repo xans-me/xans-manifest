@@ -1,18 +1,28 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: data-fetch-cronjob
-  namespace: minio
+  name: {{ include "my-chart.fullname" . }}-cronjob
 spec:
-  schedule: "*/5 * * * *"  # Menjalankan setiap hari pukul 06:00
+  schedule: "{{ .Values.cronjob.schedule }}"
   jobTemplate:
     spec:
       template:
         spec:
           containers:
           - name: data-fetch-container
-            image: muliaichsan17/data-fetch:latest  # Image Docker yang dibangun dan di-push
+            image: "{{ .Values.cronjob.image }}"
             envFrom:
             - configMapRef:
-                name: data-fetch-config  # Referensi ke ConfigMap untuk environment variables
+                name: {{ include "my-chart.fullname" . }}-config
+            env:
+            - name: MINIO_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "my-chart.fullname" . }}-credentials
+                  key: MINIO_ACCESS_KEY
+            - name: MINIO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "my-chart.fullname" . }}-credentials
+                  key: MINIO_SECRET_KEY
           restartPolicy: OnFailure

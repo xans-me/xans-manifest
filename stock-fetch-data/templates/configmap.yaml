@@ -5,3 +5,6 @@ metadata:
 data:
   MINIO_ENDPOINT: "{{ .Values.minio.endpoint }}"
   MINIO_BUCKET: "{{ .Values.minio.bucket }}"
+  TICKER_LIST: "{{ .Values.minio.ticker_list | default "ANTM.JK,BBRI.JK" }}"
+  START_DATE: "{{ .Values.minio.start_date | default "2021-01-01" }}"
+  FETCH_MODE: "daily"
