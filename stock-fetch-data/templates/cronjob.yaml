@@ -4,7 +4,7 @@ metadata:
   name: data-fetch-cronjob
   namespace: minio
 spec:
-  schedule: "0 6 * * *"  # Menjalankan setiap hari pukul 06:00
+  schedule: "*/5 * * * *"  # Menjalankan setiap hari pukul 06:00
   jobTemplate:
     spec:
       template:

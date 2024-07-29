@@ -1,9 +1,9 @@
 minio:
-  endpoint: "http://minio-service.my-namespace.svc.cluster.local:9000"
+  endpoint: "https://minio.minio.svc.cluster.local:443"
   bucket: "stock-data-bucket"
   accessKey: ""
   secretKey: ""
 
 cronjob:
-  schedule: "0 6 * * *"  # Menjalankan setiap hari pukul 06:00
-  image: "my-repo/data-fetch-job:latest"
+  schedule: "*/5 * * * *"  # Menjalankan setiap hari pukul 06:00
+  image: "muliaichsan17/data-fetch:latest"
